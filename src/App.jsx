@@ -1,4 +1,3 @@
-
 import './App.css'
 import {useState} from 'react';
 
@@ -8,27 +7,26 @@ import Product from './Components/Product/Product'
 
 function App() {
   const [products, setProducts] = useState ( [
-    { id: 1, title: 'A sign of Four', arthor: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
-    { id: 2, title: 'A Study in Scarlet', arthor: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
-    { id: 3, title: 'Baskervilles Hound', arthor: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
-    { id: 4, title:'The Adventures of Sherlock Holmes', arthor: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
+    { id: 1, title: 'A sign of Four', author: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
+    { id: 2, title: 'A Study in Scarlet', author: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
+    { id: 3, title: 'Baskervilles Hound', author: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
+    { id: 4, title:'The Adventures of Sherlock Holmes', author: 'Av Sir Arthur Conan Doyle', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore expedita vel distinctio aperiam nobis. Culpa aliquid nemo aliquam dolorum illo cum nobis quos dolore quas, voluptatibus maiores, veritatis perferendis distinctio.' },
   ]);
   
-  const [cart, setCart] = useState ([])
+  const [cart, setCart] = useState([])
 
-  // FYI - i products.map((*product*) => altså (product, kan man själv välja namnet på variabeln))
   const productComponents = products.map((product) => {
-    return <Product title = {product.title} arthor = {product.arthor} description = {product.description} key = {product.id} addNewProduct = {addNewProduct} /> 
+    return <Product addSelectedBook = {selectedBook} title = {product.title} aurthor = {product.author} description={product.description} key={product.id} id={product.id} /> 
   });
 
-  function addNewProduct(bookFromProduct) {
-    console.log(`Adding new book: ${bookFromProduct}`);
+  function selectedBook(props) {
+    props.id
 
     const newBook = {
-      id: cart.length + 1,  
-      title: bookFromProduct.title, 
-      arthor: bookFromProduct.arthor, 
-      description: bookFromProduct
+      id: selectedBook.id,
+      title: props.title, 
+      author:props.author, 
+      description:props.description
     }
     console.log(newBook);
 
@@ -36,11 +34,12 @@ function App() {
     tempProductsArray.push(newBook);
 
     setCart(tempProductsArray);
+    // props.selectedBook(newBook);
   }
 
   return (
     <div className="App">
-      <Header /> 
+      <Header updateCart={cart} /> 
       <section className='grid-container'>
          {productComponents}
       </section>

@@ -8,7 +8,7 @@ function Product(props) {
 
     function handleClick() {
         console.log(`Lägger till bok: ${newBook}`);
-        props.addNewProduct(newBook);
+        props.addSelectedBook(newBook);
     }
 
     return(

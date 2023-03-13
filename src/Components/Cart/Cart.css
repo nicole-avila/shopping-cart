@@ -1,15 +1,12 @@
-article {
+a {
     display: flex;
-    align-items: center;
-}
-article a {
     text-decoration: none;
     color: hotpink;
-    margin: 0;
 }
-figure {
-    margin: 5px;
+article span {
     background-color: #ffffff;
-    border-radius: 50%;
     width: 1.2rem;
+    color: #000;
+    border-radius: 50%;
+    margin-left: 4px;
 }
