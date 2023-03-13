@@ -1,0 +1,11 @@
+.Holms-image {
+    width: 100px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+header {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
